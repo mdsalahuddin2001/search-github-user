@@ -1,5 +1,5 @@
 /** @format */
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 * {
 	margin: 0;
 	padding: 0;
@@ -10,22 +10,47 @@ html {
 	font-size: 16px;
 }
 body {
-	font-family: sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	background: #efefef;
 }
 /* Global Styling */
+.bg-yeallow {
+	background-color: rgba(255, 227, 103, 0.2);
+}
+.bg-pink {
+	background-color: rgba(255, 93, 153, 0.2);
+}
+.bg-blue {
+	background-color: rgba(92, 193, 253, 0.2);
+}
+.bg-green {
+	background-color: rgba(58, 250, 213, 0.2);
+}
 .container {
-	max-width: 1170px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 40px;
+}
+img {
+	max-width: 100%;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style-type: none;
 }
 section {
 	padding: 30px 0;
 }
+input:focus,
+button:focus {
+	outline: 0;
+}
 /* Search Section  */
 .search .container {
 	display: grid;
-	grid-template-columns: 8fr 2fr;
+	grid-template-columns: 8fr 2.5fr;
 	gap: 50px;
 	align-items: center;
 }
@@ -42,20 +67,202 @@ section {
 	border: 0;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
+	font-size: 16px;
+}
+::-webkit-input-placeholder {
+	/* Edge */
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+::placeholder {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 }
 .search-box form button {
 	width: 70px;
 	height: 50px;
 	border: 0;
-	background: tomato;
+	background: rgb(255, 93, 153);
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
 }
 .search-limits {
-	background: tomato;
 	height: 50px;
+	border-radius: 5px;
+	padding: 0 10px;
 	display: flex;
 	align-items: center;
 }
+.search-limits h4 {
+	font-size: 20px;
+	font-weight: 400;
+	color: #333;
+}
 .search-box form {
+}
+
+/* Cards Stylings */
+.cards .container {
+	/* display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	flex-basis: 100px;
+	flex-shrink: 2; */
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 1rem 1rem;
+}
+.cards .card {
+	padding: 1rem 2rem;
+	background: #fff;
+	border-radius: 4px;
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+.cards .card span {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	margin-right: 30px;
+}
+.cards .card:last-child {
+	margin-right: 0;
+}
+.cards .card div h3 {
+	font-weight: 600;
+	color: #333;
+}
+.cards .card div p {
+	color: #617d98;
+	font-size: 14px;
+	font-weight: 300;
+}
+/* User Info */
+.user-info .grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+}
+@media screen and (max-width: 979px) {
+	.user-info .grid-container {
+		grid-template-columns: 1fr;
+	}
+}
+.profile-info,
+.followers {
+	background: #fff;
+	padding: 1.5rem 2rem;
+	border-radius: 5px;
+}
+.profile-info .profile-heading {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	margin-bottom: 15px;
+}
+.profile-info .profile-heading img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	margin-right: 30px;
+}
+.profile-info .profile-heading h4 {
+	font-size: 18px;
+	letter-spacing: 1px;
+	margin-bottom: 2px;
+}
+.profile-info .profile-heading .username {
+	font-size: 14px;
+	color: #5cc1fd;
+}
+.profile-info .profile-heading a {
+	color: #ff5d99;
+	border: 1px solid #ff5d99;
+	padding: 4px 16px;
+	border-radius: 18px;
+	transition: background 0.3s, color 0.3s;
+}
+.profile-info .profile-heading a:hover {
+	background: #ff5d99;
+	color: #fff;
+}
+.profile-info p,
+a {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+}
+.profile-info p {
+	color: #617d98;
+}
+.profile-info .bio {
+	display: block;
+	color: #444;
+	margin-bottom: 15px;
+}
+.profile-info svg {
+	font-size: 1.3rem;
+	margin-right: 10px;
+}
+.profile-info a {
+	color: teal;
+}
+.followers {
+	overflow-x: auto;
+	overflow-y: scroll;
+	height: 270px;
+	padding: 1rem 2rem;
+	position: relative;
+}
+/* Custom Scrollbar */
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f6f6f6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #617d98;
+}
+
+.followers .title {
+	text-transform: uppercase;
+	position: absolute;
+	color: #617d98;
+	right: -35px;
+	top: 50%;
+	letter-spacing: 5px;
+	transform: translate(0, -50%);
+	transform: rotate(270deg);
+	font-weight: 300;
+}
+
+.followers article {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	margin-bottom: 15px;
+}
+.followers article img {
+	height: 45px;
+	width: 45px;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+.followers article a {
+	color: #617d98;
 }
