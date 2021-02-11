@@ -15,16 +15,16 @@ body {
 }
 /* Global Styling */
 .bg-yeallow {
-	background-color: rgba(255, 227, 103, 0.2);
+	background-color: rgba(255, 227, 103, 0.15);
 }
 .bg-pink {
-	background-color: rgba(255, 93, 153, 0.2);
+	background-color: rgba(255, 93, 153, 0.15);
 }
 .bg-blue {
-	background-color: rgba(92, 193, 253, 0.2);
+	background-color: rgba(92, 193, 253, 0.15);
 }
 .bg-green {
-	background-color: rgba(58, 250, 213, 0.2);
+	background-color: rgba(58, 250, 213, 0.15);
 }
 .container {
 	max-width: 1200px;
@@ -54,8 +54,7 @@ button:focus {
 	gap: 50px;
 	align-items: center;
 }
-.search-box {
-}
+
 .search-box form {
 	display: flex;
 }
@@ -105,8 +104,6 @@ button:focus {
 	font-weight: 400;
 	color: #333;
 }
-.search-box form {
-}
 
 /* Cards Stylings */
 .cards .container {
@@ -148,10 +145,6 @@ button:focus {
 }
 /* User Info */
 .user-info .grid-container {
-	/* display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 30px;
-	 */
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -220,7 +213,7 @@ a {
 	color: teal;
 }
 .followers {
-	overflow-x: scroll;
+	overflow-x: auto;
 	overflow-y: scroll;
 	height: 270px;
 	position: relative;
@@ -279,7 +272,13 @@ a {
 		margin-bottom: 50px;
 	}
 }
-
+@media screen and (max-width: 767px) {
+	.search .container {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
 @media screen and (max-width: 491px) {
 	.profile-info .profile-heading {
 		display: flex;
@@ -303,6 +302,12 @@ a {
 		border-radius: 50%;
 		margin-right: 0px;
 		margin-bottom: 15px;
+	}
+	.followers {
+		height: 300px;
+	}
+	.followers article a {
+		display: none;
 	}
 	.followers .title {
 		text-transform: uppercase;
