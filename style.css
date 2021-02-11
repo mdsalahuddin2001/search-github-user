@@ -148,20 +148,21 @@ button:focus {
 }
 /* User Info */
 .user-info .grid-container {
-	display: grid;
+	/* display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 30px;
+	 */
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
-@media screen and (max-width: 979px) {
-	.user-info .grid-container {
-		grid-template-columns: 1fr;
-	}
-}
+
 .profile-info,
 .followers {
 	background: #fff;
 	padding: 1.5rem 2rem;
 	border-radius: 5px;
+	width: 49%;
 }
 .profile-info .profile-heading {
 	display: grid;
@@ -190,11 +191,13 @@ button:focus {
 	padding: 4px 16px;
 	border-radius: 18px;
 	transition: background 0.3s, color 0.3s;
+	text-transform: uppercase;
 }
 .profile-info .profile-heading a:hover {
 	background: #ff5d99;
 	color: #fff;
 }
+
 .profile-info p,
 a {
 	display: flex;
@@ -217,10 +220,9 @@ a {
 	color: teal;
 }
 .followers {
-	overflow-x: auto;
+	overflow-x: scroll;
 	overflow-y: scroll;
 	height: 270px;
-	padding: 1rem 2rem;
 	position: relative;
 }
 /* Custom Scrollbar */
@@ -243,7 +245,7 @@ a {
 	text-transform: uppercase;
 	position: absolute;
 	color: #617d98;
-	right: -35px;
+	right: -50px;
 	top: 50%;
 	letter-spacing: 5px;
 	transform: translate(0, -50%);
@@ -265,4 +267,52 @@ a {
 }
 .followers article a {
 	color: #617d98;
+}
+
+@media screen and (max-width: 979px) {
+	.user-info .grid-container {
+		flex-direction: column;
+	}
+	.profile-info,
+	.followers {
+		width: 100%;
+		margin-bottom: 50px;
+	}
+}
+
+@media screen and (max-width: 491px) {
+	.profile-info .profile-heading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.profile-info,
+	.followers {
+		background: #fff;
+		padding: 1.5rem 1rem;
+	}
+
+	.profile-info .profile-heading .follow-btn-container a {
+		display: inline-block;
+		margin-top: 10px;
+	}
+	.profile-info .profile-heading img {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		margin-right: 0px;
+		margin-bottom: 15px;
+	}
+	.followers .title {
+		text-transform: uppercase;
+		position: static;
+		color: #617d98;
+		right: -50px;
+		top: 50%;
+		letter-spacing: 5px;
+		transform: unset;
+		font-weight: 300;
+		margin-bottom: 20px;
+	}
 }
