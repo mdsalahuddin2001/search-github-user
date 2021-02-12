@@ -43,11 +43,21 @@ ul {
 section {
 	padding: 30px 0;
 }
+button {
+	cursor: pointer;
+}
 input:focus,
 button:focus {
 	outline: 0;
 }
 /* Search Section  */
+#errorMsg {
+	color: #ff5d99;
+	font-weight: 300;
+	padding: 30px 0;
+	height: 60px;
+	margin-bottom: 15px;
+}
 .search .container {
 	display: grid;
 	grid-template-columns: 8fr 2.5fr;
