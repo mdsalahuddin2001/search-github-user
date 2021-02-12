@@ -260,7 +260,6 @@ a {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	align-items: center;
-	margin-bottom: 15px;
 }
 .followers article img {
 	height: 45px;
