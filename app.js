@@ -33,7 +33,8 @@ function fetchData(username) {
 				fetch(`${data.repos_url}?per_page=100`)
 					.then((response) => response.json())
 					.then((data) => {
-						showLanguagesInChart(data);
+						updateLanguagesAndStarsInChart(data);
+						updateStarsAndForksInChart(data);
 					})
 					.catch((err) => console.log(err));
 				// Show Main Data
@@ -87,77 +88,19 @@ function showFollowers(data) {
 				</div>
 				</article>`;
 		})
-		.join();
+		.join('');
 }
+// Static data for chart********//
 
-// Show Languages in Pie chart
-function showLanguagesInChart(repos) {
-	let languages = repos.reduce((total, repo) => {
-		let { language } = repo;
-		if (!language) {
-			return total;
-		}
-		if (!total[language]) {
-			total[language] = { label: language, value: 1 };
-		} else {
-			total[language] = {
-				...total[language],
-				value: total[language].value + 1,
-			};
-		}
-		return total;
-	}, {});
-	console.log(typeof languages);
-	console.log();
-	// Show Charts Using Chart.js
-	let ctxLang = document.getElementById('languages').getContext('2d');
-	let showLanguages = new Chart(ctxLang, {
-		// The type of chart we want to create
-		type: 'pie',
+// Show Popular languages in Pie Charts Using Chart.js
+let ctxLang = document.getElementById('languages').getContext('2d');
+let showLanguages = new Chart(ctxLang, {
+	// The type of chart we want to create
+	type: 'pie',
 
-		// The data for our dataset
-		data: {
-			labels: Object.keys(languages).map((key) => {
-				return languages[key].label;
-			}),
-			datasets: [
-				{
-					label: 'Languages',
-					backgroundColor: [
-						'rgba(255, 227, 103, 0.9)',
-						'rgba(255, 93, 153, 0.9)',
-						'rgba(92, 193, 253, 0.9)',
-					],
-					data: Object.keys(languages).map((key) => {
-						return languages[key].value;
-					}),
-				},
-			],
-		},
-
-		// Configuration options go here
-		options: {
-			title: {
-				display: true,
-				text: 'Languages',
-				fontSize: '16',
-				position: 'left',
-			},
-			legend: {
-				position: 'right',
-			},
-		},
-	});
-}
-
-// Show Repos in Bar chart
-let ctxRepos = document.getElementById('repos').getContext('2d');
-let repos = new Chart(ctxRepos, {
-	// What type of chart we want
-	type: 'bar',
 	// The data for our dataset
 	data: {
-		labels: ['HTML', 'CSS', 'JavaScript', 'Python', 'C#'],
+		labels: ['HTML', 'CSS', 'JavaScript'],
 		datasets: [
 			{
 				label: 'Languages',
@@ -165,10 +108,8 @@ let repos = new Chart(ctxRepos, {
 					'rgba(255, 227, 103, 0.9)',
 					'rgba(255, 93, 153, 0.9)',
 					'rgba(92, 193, 253, 0.9)',
-					'mediumseagreen',
-					'crimson',
 				],
-				data: [25, 62, 13, 30, 100],
+				data: [10, 46, 30],
 			},
 		],
 	},
@@ -182,10 +123,208 @@ let repos = new Chart(ctxRepos, {
 			position: 'left',
 		},
 		legend: {
+			position: 'right',
+		},
+	},
+});
+
+// Show Starts Per Language in Dounought Chart
+
+let ctxStars = document.getElementById('stars').getContext('2d');
+let showStarsPerLanguage = new Chart(ctxStars, {
+	// The type of chart we want to create
+	type: 'doughnut',
+
+	// The data for our dataset
+	data: {
+		labels: ['HTML', 'CSS', 'JS'],
+		datasets: [
+			{
+				label: 'Languages',
+				backgroundColor: [
+					'rgba(255, 227, 103, 0.9)',
+					'rgba(255, 93, 153, 0.9)',
+					'rgba(92, 193, 253, 0.9)',
+				],
+				data: [320, 260, 180],
+			},
+		],
+	},
+
+	// Configuration options go here
+	options: {
+		title: {
+			display: true,
+			text: 'Starts Per Language',
+			fontSize: '16',
+			position: 'left',
+		},
+		legend: {
+			position: 'right',
+		},
+	},
+});
+
+// Show Repos in Bar chart
+let ctxRepos = document.getElementById('repos').getContext('2d');
+let reposChart = new Chart(ctxRepos, {
+	// What type of chart we want
+	type: 'bar',
+	// The data for our dataset
+	data: {
+		labels: [
+			'currency-converter',
+			'ip-address-tracker',
+			'calculator',
+			'moto-racing',
+			'speed-code',
+		],
+		datasets: [
+			{
+				label: 'Popular Repositories',
+				backgroundColor: [
+					'rgba(255, 227, 103, 0.9)',
+					'rgba(255, 93, 153, 0.9)',
+					'rgba(92, 193, 253, 0.9)',
+					'mediumseagreen',
+					'crimson',
+				],
+				data: [320, 221, 115, 90, 50],
+			},
+		],
+	},
+
+	// Configuration options go here
+	options: {
+		title: {
+			display: true,
+			text: 'Languages',
+			fontSize: '16',
+			position: 'right',
+		},
+		legend: {
 			display: false,
 		},
 	},
 });
+
+// Show Most Forked Repos in Chart
+
+let ctxForks = document.getElementById('forks').getContext('2d');
+let forksChart = new Chart(ctxForks, {
+	// What type of chart we want
+	type: 'line',
+	// The data for our dataset
+	data: {
+		labels: [
+			'currency-converter',
+			'ip-address-tracker',
+			'calculator',
+			'moto-racing',
+			'speed-code',
+		],
+		datasets: [
+			{
+				label: 'Popular Repositories',
+				backgroundColor: [
+					'rgba(255, 227, 103, 0.9)',
+					'rgba(255, 93, 153, 0.9)',
+					'rgba(92, 193, 253, 0.9)',
+					'mediumseagreen',
+					'crimson',
+				],
+				backgroundColor: 'rgb(255, 99, 132)',
+				data: [600, 410, 320, 224, 110],
+			},
+		],
+	},
+
+	// Configuration options go here
+	options: {
+		title: {
+			display: true,
+			text: 'Forks',
+			fontSize: '16',
+			position: 'right',
+		},
+		legend: {
+			display: false,
+		},
+	},
+});
+
+// Update Languages and Stars in Pie chart
+function updateLanguagesAndStarsInChart(repos) {
+	let languages = repos.reduce((total, repo) => {
+		let { language, stargazers_count } = repo;
+		if (!language) {
+			return total;
+		}
+		if (!total[language]) {
+			total[language] = { label: language, value: 1, stars: stargazers_count };
+		} else {
+			total[language] = {
+				...total[language],
+				value: total[language].value + 1,
+				stars: total[language].stars + stargazers_count,
+			};
+		}
+		return total;
+	}, {});
+
+	// Update showLanguages in Pie Chart from API
+	showLanguages.data.labels = Object.keys(languages).map(
+		(key) => languages[key].label,
+	);
+	showLanguages.data.datasets[0].data = Object.keys(languages).map(
+		(key) => languages[key].value,
+	);
+	showLanguages.update();
+
+	// Update showStarsPerLanguage in bar chart from API
+	showStarsPerLanguage.data.labels = Object.keys(languages).map(
+		(key) => languages[key].label,
+	);
+	showStarsPerLanguage.data.datasets[0].data = Object.keys(languages).map(
+		(key) => languages[key].stars,
+	);
+	showStarsPerLanguage.update();
+}
+// Update Most starred and forded repos in Bar Chart
+function updateStarsAndForksInChart(repos) {
+	let { stars, forks } = repos.reduce(
+		(total, repo) => {
+			let { stargazers_count, name, forks } = repo;
+			total.stars[stargazers_count] = {
+				label: name,
+				value: stargazers_count,
+			};
+			total.forks[forks] = { label: name, value: forks };
+			return total;
+		},
+		{
+			stars: {},
+			forks: {},
+		},
+	);
+	stars = Object.values(stars).slice(-5).reverse();
+	forks = Object.values(forks).slice(-5).reverse();
+	let starsLabel = stars.map((item) => item.label);
+	let starsValue = stars.map((item) => item.value);
+	let forksLabel = forks.map((item) => item.label);
+	let forksValue = forks.map((item) => item.value);
+	console.log(stars.map((item) => item.label));
+
+	// Update most starred repos  in bar chart from API
+	reposChart.data.labels = starsLabel;
+	reposChart.data.datasets[0].data = starsValue;
+	reposChart.update();
+
+	// Update Most Forked Repos From Api
+	forksChart.data.labels = forksLabel;
+	forksChart.data.datasets[0].data = forksValue;
+	forksChart.update();
+}
 
 // Search Button Click Event
 searchBtn.addEventListener('click', (e) => {

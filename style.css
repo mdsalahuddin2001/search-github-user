@@ -260,6 +260,7 @@ a {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	align-items: center;
+	margin-bottom: 15px;
 }
 .followers article img {
 	height: 45px;
@@ -275,6 +276,7 @@ a {
 	grid-template-columns: 2fr 3fr;
 	gap: 30px;
 	justify-content: center;
+	max-width: 100%;
 }
 .languages,
 .repos,
@@ -346,8 +348,13 @@ a {
 		margin-bottom: 20px;
 	}
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
 	.charts-container {
 		grid-template-columns: 1fr 1fr;
+	}
+}
+@media screen and (max-width: 800px) {
+	.charts-container {
+		grid-template-columns: 1fr;
 	}
 }
