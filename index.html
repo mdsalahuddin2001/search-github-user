@@ -6,8 +6,13 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Search||Github||User</title>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+			integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+			crossorigin="anonymous"
+		></script>
 		<link rel="stylesheet" href="style.css" />
+		<title>Search||Github||User</title>
 	</head>
 	<body>
 		<section class="search">
@@ -213,6 +218,16 @@
 								</article>
 							</div>
 						</div>
+					</div>
+				</div>
+			</section>
+			<section class="charts">
+				<div class="container">
+					<div class="charts-container">
+						<div class="languages"><canvas id="languages"></canvas></div>
+						<div class="repos"><canvas id="repos"></canvas></div>
+						<div class="stars">stars</div>
+						<div class="forks">forks</div>
 					</div>
 				</div>
 			</section>

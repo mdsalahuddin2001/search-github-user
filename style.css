@@ -270,6 +270,22 @@ a {
 .followers article a {
 	color: #617d98;
 }
+.charts-container {
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	gap: 30px;
+	justify-content: center;
+}
+.languages,
+.repos,
+.stars,
+.forks {
+	background: #fff;
+	border-radius: 5px;
+	padding: 1.5rem 2rem;
+	display: grid;
+	place-items: center;
+}
 
 @media screen and (max-width: 979px) {
 	.user-info .grid-container {
@@ -328,5 +344,10 @@ a {
 		transform: unset;
 		font-weight: 300;
 		margin-bottom: 20px;
+	}
+}
+@media screen and (max-width: 800px) {
+	.charts-container {
+		grid-template-columns: 1fr 1fr;
 	}
 }
