@@ -361,5 +361,19 @@ a {
 	.forks {
 		padding: 1.5rem 1rem;
 	}
-
+}
+@media screen and (max-width: 520px) {
+	.languages,
+	.repos,
+	.stars,
+	.forks {
+		height: 320px;
+	}
+	canvas#repos {
+		width: 300px !important;
+		height: 250px !important;
+	}
+	.chartWrapper-repos {
+		height: 500px !important;
+	}
 }

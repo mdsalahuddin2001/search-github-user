@@ -250,8 +250,8 @@ let reposChart = new Chart(ctxRepos, {
 
 	// Configuration options go here
 	options: {
-		// responsive: true,
-		// maintainAspectRatio: false,
+		responsive: true,
+		maintainAspectRatio: false,
 		title: {
 			display: true,
 			text: 'Most Starred Repositories',
