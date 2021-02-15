@@ -117,11 +117,6 @@ button:focus {
 
 /* Cards Stylings */
 .cards .container {
-	/* display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	flex-basis: 100px;
-	flex-shrink: 2; */
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 	gap: 1rem 1rem;
@@ -129,6 +124,7 @@ button:focus {
 .cards .card {
 	padding: 1rem 2rem;
 	background: #fff;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border-radius: 4px;
 	display: grid;
 	grid-template-columns: auto 1fr;
@@ -166,6 +162,7 @@ button:focus {
 	padding: 1.5rem 2rem;
 	border-radius: 5px;
 	width: 49%;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .profile-info .profile-heading {
 	display: grid;
@@ -287,6 +284,7 @@ a {
 	padding: 1.5rem 2rem;
 	display: grid;
 	place-items: center;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 @media screen and (max-width: 979px) {
@@ -357,4 +355,11 @@ a {
 	.charts-container {
 		grid-template-columns: 1fr;
 	}
+	.languages,
+	.repos,
+	.stars,
+	.forks {
+		padding: 1.5rem 1rem;
+	}
+
 }
